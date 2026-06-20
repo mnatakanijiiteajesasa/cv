@@ -2,15 +2,15 @@
    TOKENS
    ============================================================ */
 :root {
-  /* color — light (default): sage graph-paper + ink + tea/clay accents */
-  --bg: #EDF1EA;
-  --bg-raised: #F6F8F3;
-  --ink: #1B2420;
-  --ink-soft: #4B5650;
-  --line: #C7D0C3;
-  --tea: #3F8B5C;
-  --clay: #C98B3D;
-  --grid: rgba(63, 139, 92, 0.10);
+  /* color — light (default): neutral paper + ink + tea/clay accents */
+  --bg: #F4F4F2;
+  --bg-raised: #FFFFFF;
+  --ink: #161616;
+  --ink-soft: #5C5C5C;
+  --line: #DCDCDC;
+  --tea: #2F8B57;
+  --clay: #B8762E;
+  --grid: rgba(0, 0, 0, 0.05);
 
   /* type */
   --font-display: 'Space Grotesk', sans-serif;
@@ -21,14 +21,15 @@
 }
 
 [data-theme="dark"] {
-  --bg: #11181A;
-  --bg-raised: #16201F;
-  --ink: #E7EEE8;
-  --ink-soft: #9BAAA2;
-  --line: #2A3A35;
-  --tea: #5BB97D;
-  --clay: #E0A35C;
-  --grid: rgba(91, 185, 125, 0.08);
+  /* pitch black — accents carry all the color now, background stays neutral */
+  --bg: #000000;
+  --bg-raised: #0A0A0A;
+  --ink: #EDEDED;
+  --ink-soft: #9A9A9A;
+  --line: #1F1F1F;
+  --tea: #4FCB7C;
+  --clay: #E3A75C;
+  --grid: rgba(255, 255, 255, 0.06);
 }
 
 * { box-sizing: border-box; }
