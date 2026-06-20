@@ -293,23 +293,18 @@ h2 .num {
   background: var(--bg-raised);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
+  overflow: hidden;
   aspect-ratio: 1;
 }
-.doc-thumb { width: 42%; }
-.doc-page, .doc-fold { fill: var(--bg); stroke: var(--ink); stroke-width: 1.4; }
-.doc-line { stroke: var(--line); stroke-width: 3; stroke-linecap: round; }
-.doc-label {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
+.doc-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1);
+  transition: filter 0.2s ease;
 }
+.work-card:hover .doc-thumb-img { filter: grayscale(0.4); }
 
 .work-body h3 { font-size: 1.4rem; margin-bottom: 0.4rem; }
 .work-meta {
