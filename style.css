@@ -284,20 +284,32 @@ h2 .num {
   gap: 2.4rem;
   padding: 2.4rem 0;
   border-bottom: 1px solid var(--line);
+  transition: background 0.15s ease;
 }
+.work-card:hover { background: var(--line); }
+.work-card:hover .work-link { text-decoration: underline; }
 
 .work-visual {
   background: var(--bg-raised);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 0.6rem;
   aspect-ratio: 1;
 }
-.mini-graph { width: 60%; }
-.leaf, .pin, .shield { fill: none; stroke: var(--accent); stroke-width: 1.6; opacity: 0.85; }
-.leaf-edge, .pin-edge, .shield-edge { stroke: var(--accent-soft); stroke-width: 1.2; opacity: 0.6; }
+.doc-thumb { width: 42%; }
+.doc-page, .doc-fold { fill: var(--bg); stroke: var(--ink); stroke-width: 1.4; }
+.doc-line { stroke: var(--line); stroke-width: 3; stroke-linecap: round; }
+.doc-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
 
 .work-body h3 { font-size: 1.4rem; margin-bottom: 0.4rem; }
 .work-meta {
@@ -323,7 +335,6 @@ h2 .num {
   font-size: 0.85rem;
   color: var(--accent);
 }
-.work-link:hover { text-decoration: underline; }
 
 /* ============================================================
    FOOTER
