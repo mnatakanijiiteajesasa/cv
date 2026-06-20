@@ -34,9 +34,9 @@
     <section class="hero">
       <div class="hero-text">
         <p class="eyebrow">Newton Mogaka · Nairobi, Kenya</p>
-        <h1>I study LLM's <br>Share my thoughts<br>Showcase my projects</h1>
+        <h1>I study LLM's and Malware<br>I share my thoughts<br>I showcase my projects</h1>
         <p class="hero-sub">
-          IT &amp; civil engineering student. I spend most nights solving
+          IT &amp; civil engineering student. I spend most nights making solutions to
           local problems such as tea yields, grocery prices, tap-to-pay, county budgets
           into graphs, models, and systems that actually run in production.
         </p>
@@ -97,74 +97,85 @@
     <section id="work" class="work">
       <h2>Work</h2>
 
-      <article class="work-card">
-        <div class="work-visual">
-          <img src="chaimetrics.jpg" alt="ChaiMetrics document preview" class="doc-thumb-img" loading="lazy">
-        </div>
-        <div class="work-body">
-          <h3>ChaiMetrics</h3>
-          <p class="work-meta">PyTorch Geometric · XGBoost · SARIMA · Flask/React · 2026</p>
-          <p class="work-abstract">
-            An ML platform for KTDA smallholder tea farmers spanning 240 farms and 15 factories.
-            Yield forecasting runs on gradient-boosted trees and SARIMA time series, while a graph
-            neural network models the farm-factory relational structure directly — treating
-            collection routes and processing dependencies as a graph rather than flattening them
-            into tabular features. An LLM narration layer translates model output into plain-language
-            guidance for farmers with no ML background.
-          </p>
-          <div class="tags">
-            <span>PyTorch Geometric</span><span>XGBoost</span><span>SARIMA</span><span>Ollama</span>
+      <div class="work-card-wrap">
+        <!-- TODO: replace href below with the link to the ChaiMetrics writeup/PDF -->
+        <a href="#" target="_blank" rel="noopener" class="work-card">
+          <div class="work-visual">
+            <img src="chaimetrics.jpg" alt="ChaiMetrics document preview" class="doc-thumb-img" loading="lazy">
           </div>
-          <a href="https://github.com/mnatakanijiiteajesasa/ChaiMetrics" class="work-link" target="_blank" rel="noopener">View repo →</a>
-        </div>
-      </article>
+          <div class="work-body">
+            <h3>ChaiMetrics</h3>
+            <p class="work-meta">PyTorch Geometric · XGBoost · SARIMA · Flask/React · 2026</p>
+            <p class="work-abstract">
+              An ML platform for KTDA smallholder tea farmers spanning 240 farms and 15 factories.
+              Yield forecasting runs on gradient-boosted trees and SARIMA time series, while a graph
+              neural network models the farm-factory relational structure directly — treating
+              collection routes and processing dependencies as a graph rather than flattening them
+              into tabular features. An LLM narration layer translates model output into plain-language
+              guidance for farmers with no ML background.
+            </p>
+            <div class="tags">
+              <span>PyTorch Geometric</span><span>XGBoost</span><span>SARIMA</span><span>Ollama</span>
+            </div>
+            <span class="work-link">View document →</span>
+          </div>
+        </a>
+        <a href="https://github.com/mnatakanijiiteajesasa/ChaiMetrics" class="repo-pill" target="_blank" rel="noopener">Repo ↗</a>
+      </div>
 
-      <article class="work-card">
-        <div class="work-visual">
-          <img src="pricepoa.jpg" alt="PricePoa document preview" class="doc-thumb-img" loading="lazy">
-        </div>
-        <div class="work-body">
-          <h3>PricePoa</h3>
-          <p class="work-meta">WhatsApp Business API · Location services · Scraping pipeline · 2026</p>
-          <p class="work-abstract">
-            A grocery price comparison agent that lives entirely inside WhatsApp — no app to install.
-            Send a shopping list, get back the cheapest nearby basket across supermarkets, ranked by
-            distance and total cost. Built on a scraping pipeline feeding a location-aware pricing
-            index, designed for a market where WhatsApp is the default interface for almost everything.
-          </p>
-          <div class="tags">
-            <span>WhatsApp API</span><span>MongoDB</span><span>Geolocation</span><span>Scrapy</span>
+      <div class="work-card-wrap">
+        <!-- TODO: replace href below with the link to the PricePoa writeup/PDF -->
+        <a href="#" target="_blank" rel="noopener" class="work-card">
+          <div class="work-visual">
+            <img src="pricepoa.jpg" alt="PricePoa document preview" class="doc-thumb-img" loading="lazy">
           </div>
-          <a href="https://github.com/mnatakanijiiteajesasa/PricePoa" class="work-link" target="_blank" rel="noopener">View repo →</a>
-          <a 
-        </div>
-      </article>
+          <div class="work-body">
+            <h3>PricePoa</h3>
+            <p class="work-meta">WhatsApp Business API · Location services · Scraping pipeline · 2026</p>
+            <p class="work-abstract">
+              A grocery price comparison agent that lives entirely inside WhatsApp — no app to install.
+              Send a shopping list, get back the cheapest nearby basket across supermarkets, ranked by
+              distance and total cost. Built on a scraping pipeline feeding a location-aware pricing
+              index, designed for a market where WhatsApp is the default interface for almost everything.
+            </p>
+            <div class="tags">
+              <span>WhatsApp API</span><span>MongoDB</span><span>Geolocation</span><span>Scrapy</span>
+            </div>
+            <span class="work-link">View document →</span>
+          </div>
+        </a>
+        <a href="https://github.com/mnatakanijiiteajesasa/PricePoa" class="repo-pill" target="_blank" rel="noopener">Repo ↗</a>
+      </div>
 
-      <article class="work-card">
-        <div class="work-visual">
-          <img src="recon.jpg" alt="RECON document preview" class="doc-thumb-img" loading="lazy">
-        </div>
-        <div class="work-body">
-          <h3>RECON</h3>
-          <p class="work-meta">Flask · MongoDB · Qdrant · GNN relational analysis · 2025–26</p>
-          <p class="work-abstract">
-            A civic accountability platform tracking Nyeri County governance — budgets, NG-CDF
-            allocations, MPs, and the Governor's office. A graph neural network models relationships
-            between officials, projects, and spending; a retrieval-augmented chatbot layer sits on top,
-            answering questions and surfacing proactive briefings from the underlying data.
-          </p>
-          <div class="tags">
-            <span>GNN</span><span>Qdrant</span><span>Vector Search</span><span>Flask</span>
+      <div class="work-card-wrap">
+        <!-- TODO: replace href below with the link to the RECON/Accountability writeup/PDF -->
+        <a href="#" target="_blank" rel="noopener" class="work-card">
+          <div class="work-visual">
+            <img src="recon.jpg" alt="RECON document preview" class="doc-thumb-img" loading="lazy">
           </div>
-          <a href="https://github.com/mnatakanijiiteajesasa/Accountability" class="work-link" target="_blank" rel="noopener">View repo →</a>
-        </div>
-      </article>
+          <div class="work-body">
+            <h3>RECON</h3>
+            <p class="work-meta">Flask · MongoDB · Qdrant · GNN relational analysis · 2025–26</p>
+            <p class="work-abstract">
+              A civic accountability platform tracking Nyeri County governance — budgets, NG-CDF
+              allocations, MPs, and the Governor's office. A graph neural network models relationships
+              between officials, projects, and spending; a retrieval-augmented chatbot layer sits on top,
+              answering questions and surfacing proactive briefings from the underlying data.
+            </p>
+            <div class="tags">
+              <span>GNN</span><span>Qdrant</span><span>Vector Search</span><span>Flask</span>
+            </div>
+            <span class="work-link">View document →</span>
+          </div>
+        </a>
+        <a href="https://github.com/mnatakanijiiteajesasa/Accountability" class="repo-pill" target="_blank" rel="noopener">Repo ↗</a>
+      </div>
     </section>
   </main>
 
   <footer id="contact">
     <div class="footer-top">
-      <p class="footer-line">Sometimes I do Engineering</p>
+      <p class="footer-line">An engineer sometimes</p>
       <div class="footer-links">
         <a href="https://github.com/mnatakanijiiteajesasa" target="_blank" rel="noopener">GitHub</a>
         <a href="mailto:mogakanewton0@gmail.com">Email</a>
