@@ -1,919 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta name="description" content="Newton Mogaka — Software Engineer based in Nairobi">
-  <meta property="og:title" content="Newton Mogaka">
-  <meta property="og:description" content="Software Engineer & Builder">
-  <meta property="og:image" content="https://yoursite.com/og-image.png">
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Newton Mogaka— Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --bg: #0b0b0f;
-      --surface: #13131a;
-      --surface2: #1c1c26;
-      --border: #2a2a3a;
-      --accent: #c8f060;
-      --accent2: #7c6af7;
-      --text: #e8e8f0;
-      --muted: #7070a0;
-      --serif: 'Playfair Display', Georgia, serif;
-      --mono: 'DM Mono', monospace;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--mono);
-      font-size: 14px;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    /* NOISE TEXTURE */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 999;
-      opacity: 0.6;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.4rem 3rem;
-      border-bottom: 1px solid var(--border);
-      background: rgba(11,11,15,0.85);
-      backdrop-filter: blur(12px);
-    }
-
-    .nav-logo {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      font-style: italic;
-      color: var(--accent);
-      letter-spacing: 0.02em;
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--accent); }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: 8rem 3rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      right: -200px; top: 50%;
-      transform: translateY(-50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(124,106,247,0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-left { padding-right: 4rem; }
-
-    .hero-tag {
-      display: inline-block;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      color: var(--accent);
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.35rem 0.85rem;
-      border-radius: 2px;
-      margin-bottom: 2rem;
-      animation: fadeUp 0.6s ease both;
-    }
-
-    .hero-name {
-      font-family: var(--serif);
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      font-weight: 900;
-      line-height: 1.0;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
-      animation: fadeUp 0.6s 0.1s ease both;
-    }
-
-    .hero-name em {
-      font-style: italic;
-      color: var(--accent2);
-    }
-
-    .hero-role {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      font-style: italic;
-      color: var(--muted);
-      margin-bottom: 2rem;
-      animation: fadeUp 0.6s 0.2s ease both;
-    }
-
-    .hero-bio {
-      color: #a0a0c0;
-      font-size: 0.9rem;
-      max-width: 480px;
-      margin-bottom: 2.5rem;
-      line-height: 1.9;
-      animation: fadeUp 0.6s 0.3s ease both;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      animation: fadeUp 0.6s 0.4s ease both;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.6rem;
-      border-radius: 3px;
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #0b0b0f;
-      font-weight: 500;
-    }
-
-    .btn-primary:hover {
-      background: #d8ff70;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(200,240,96,0.25);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent2);
-      color: var(--accent2);
-      transform: translateY(-2px);
-    }
-
-    /* HERO RIGHT — stats */
-    .hero-right {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      animation: fadeUp 0.6s 0.3s ease both;
-    }
-
-    .stat-card {
-      background: var(--surface);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      transition: background 0.2s;
-    }
-
-    .stat-card:hover { background: var(--surface2); }
-
-    .stat-num {
-      font-family: var(--serif);
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    /* SECTION COMMON */
-    section {
-      padding: 6rem 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .section-num {
-      font-size: 0.68rem;
-      color: var(--accent);
-      letter-spacing: 0.15em;
-    }
-
-    .section-title {
-      font-family: var(--serif);
-      font-size: 2.2rem;
-      font-weight: 700;
-    }
-
-    .section-line {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    /* EXPERIENCE */
-    .exp-list { display: flex; flex-direction: column; gap: 0; }
-
-    .exp-item {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 2rem;
-      padding: 2.5rem 0;
-      border-bottom: 1px solid var(--border);
-      transition: background 0.2s;
-    }
-
-    .exp-meta { padding-right: 1rem; }
-
-    .exp-date {
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      margin-bottom: 0.5rem;
-    }
-
-    .exp-company {
-      font-weight: 500;
-      color: var(--accent2);
-      font-size: 0.85rem;
-    }
-
-    .exp-role {
-      font-family: var(--serif);
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-    }
-
-    .exp-desc {
-      color: #9090b0;
-      font-size: 0.88rem;
-      line-height: 1.9;
-      margin-bottom: 1rem;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .tag {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 0.67rem;
-      padding: 0.25rem 0.65rem;
-      border-radius: 2px;
-      letter-spacing: 0.08em;
-    }
-
-    /* PROJECTS */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1px;
-      background: var(--border);
-    }
-
-    .project-card {
-      background: var(--surface);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      text-decoration: none;
-      color: inherit;
-      transition: background 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent2), var(--accent));
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-      transform-origin: left;
-    }
-
-    .project-card:hover { background: var(--surface2); }
-    .project-card:hover::before { transform: scaleX(1); }
-
-    .project-icon {
-      font-size: 1.8rem;
-      line-height: 1;
-    }
-
-    .project-name {
-      font-family: var(--serif);
-      font-size: 1.2rem;
-      font-weight: 700;
-    }
-
-    .project-desc {
-      color: #9090b0;
-      font-size: 0.85rem;
-      line-height: 1.8;
-      flex: 1;
-    }
-
-    .project-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .project-link {
-      font-size: 0.72rem;
-      color: var(--accent);
-      letter-spacing: 0.08em;
-    }
-
-    .project-stars {
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    /* SKILLS */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .skill-group {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1.5rem;
-      border-radius: 2px;
-    }
-
-    .skill-group-title {
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    /* CONTACT */
-    .contact-section {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 4rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto 6rem;
-    }
-
-    .contact-heading {
-      font-family: var(--serif);
-      font-size: 2.5rem;
-      font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-    }
-
-    .contact-heading em { color: var(--accent); font-style: italic; }
-
-    .contact-text {
-      color: #9090b0;
-      font-size: 0.9rem;
-      line-height: 1.9;
-      margin-bottom: 2rem;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      color: var(--text);
-      text-decoration: none;
-      padding: 1rem 1.25rem;
-      border: 1px solid var(--border);
-      transition: all 0.2s;
-      font-size: 0.85rem;
-    }
-
-    .contact-link:hover {
-      border-color: var(--accent2);
-      color: var(--accent2);
-      background: rgba(124,106,247,0.06);
-    }
-
-    .contact-link-icon { font-size: 1.2rem; }
-    .contact-link-label { color: var(--muted); font-size: 0.68rem; display: block; }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 3rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: var(--muted);
-      font-size: 0.72rem;
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav { padding: 1.2rem 1.5rem; }
-      .nav-links { gap: 1.5rem; }
-      .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
-      .hero-left { padding-right: 0; }
-      .hero-right { margin-top: 2rem; }
-      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
-      section { padding: 4rem 1.5rem; }
-      .contact-section { grid-template-columns: 1fr; padding: 2.5rem; gap: 2rem; }
-      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indie Engineer — Nairobi</title>
+  <meta name="description" content="Building infrastructure for problems no one else is solving, from Nairobi." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-logo">Diggy</a>
-    <ul class="nav-links">
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <header class="nav">
+    <a href="#" class="brand">
+      <!-- TODO: swap for your initial / wordmark -->
+      M<span class="brand-dot">.</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#builds">Builds</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+        <circle cx="12" cy="12" r="4.2"/>
+        <path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/>
+      </svg>
+    </button>
+  </header>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-left">
-      <span class="hero-tag">Available for opportunities</span>
-      <h1 class="hero-name">Newton <em>Mogaka</em></h1>
-      <p class="hero-role">Software Engineer & Builder, Animator, Structural Engineer, Educator</p>
-      <p class="hero-bio">
-        I design and build digital products that are fast, accessible, and crafted with
-        attention to detail. Focused on full-stack development with a strong interest in
-        developer tooling and open-source.
-      </p>
-      <div class="hero-ctas">
-        <a href="#contact" class="btn btn-primary">Get in touch ↗</a>
-        <a href="https://github.com/mnatakanijiiteajesasa" target="_blank" class="btn btn-ghost">GitHub</a>
-        <a href="resume.pdf" class="btn btn-ghost">Resume ↓</a>
-      </div>
-    </div>
-
-    <div class="hero-right">
-      <div class="stat-card">
-        <span class="stat-num">5+</span>
-        <span class="stat-label">Years Experience</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-num">10</span>
-        <span class="stat-label">Projects Shipped</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-num">53</span>
-        <span class="stat-label">Open Source Repos</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-num">1</span>
-        <span class="stat-label">Countries Worked</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="section-header fade-in">
-      <span class="section-num">01</span>
-      <h2 class="section-title">Experience</h2>
-      <div class="section-line"></div>
-    </div>
-      <div class="exp-item fade-in">
-        <div class="exp-meta">
-          <p class="exp-date">2024-2026</p>
-          <p class="exp-company">Thriving</p>
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">Indie Engineer · Nairobi, Kenya</p>
+        <h1>I build the infrastructure<br>Kenya's data problems<br>are still waiting for.</h1>
+        <p class="hero-sub">
+          Fourth-year BBIT &amp; civil engineering student. I spend most nights turning
+          unglamorous local problems — tea yields, grocery prices, tap-to-pay, county budgets —
+          into graphs, models, and systems that actually run in production.
+        </p>
+        <div class="hero-links">
+          <a href="#work" class="btn-primary">See the work →</a>
+          <a href="https://github.com/mnatakanijiiteajesasa" class="btn-ghost" target="_blank" rel="noopener">GitHub</a>
         </div>
-        <div class="exp-body">
-          <h3 class="exp-role">Full Stack Developer</h3>
-          <p class="exp-desc">
-            Built and maintained multiple client-facing applications. Introduced CI/CD
-            pipelines that cut deployment time by 60%. Worked closely with design to
-            ship pixel-perfect interfaces.
+      </div>
+
+      <div class="hero-graph" aria-hidden="true">
+        <svg viewBox="0 0 420 380" class="graph-svg">
+          <!-- faint grid -->
+          <g class="grid-lines">
+            <line x1="0" y1="40" x2="420" y2="40"/><line x1="0" y1="100" x2="420" y2="100"/>
+            <line x1="0" y1="160" x2="420" y2="160"/><line x1="0" y1="220" x2="420" y2="220"/>
+            <line x1="0" y1="280" x2="420" y2="280"/><line x1="0" y1="340" x2="420" y2="340"/>
+            <line x1="60" y1="0" x2="60" y2="380"/><line x1="140" y1="0" x2="140" y2="380"/>
+            <line x1="220" y1="0" x2="220" y2="380"/><line x1="300" y1="0" x2="300" y2="380"/>
+            <line x1="380" y1="0" x2="380" y2="380"/>
+          </g>
+
+          <!-- edges (drawn first, animated) -->
+          <g class="edges">
+            <line x1="120" y1="80" x2="240" y2="60" class="edge" style="--d:0"/>
+            <line x1="120" y1="80" x2="80" y2="200" class="edge" style="--d:1"/>
+            <line x1="240" y1="60" x2="330" y2="150" class="edge" style="--d:2"/>
+            <line x1="80" y1="200" x2="180" y2="260" class="edge" style="--d:3"/>
+            <line x1="330" y1="150" x2="270" y2="300" class="edge" style="--d:4"/>
+            <line x1="180" y1="260" x2="270" y2="300" class="edge" style="--d:5"/>
+            <line x1="240" y1="60" x2="180" y2="260" class="edge" style="--d:6"/>
+            <line x1="80" y1="200" x2="330" y2="150" class="edge" style="--d:7"/>
+          </g>
+
+          <!-- nodes -->
+          <g class="nodes">
+            <g class="node" style="--d:0"><circle cx="120" cy="80" r="5"/><text x="132" y="76">PricePoa</text></g>
+            <g class="node" style="--d:1"><circle cx="240" cy="60" r="5"/><text x="252" y="56">ChaiMetrics</text></g>
+            <g class="node" style="--d:2"><circle cx="80" cy="200" r="5"/><text x="14" y="196">TaPesa</text></g>
+            <g class="node" style="--d:3"><circle cx="330" cy="150" r="5"/><text x="342" y="146">RECON</text></g>
+            <g class="node" style="--d:4"><circle cx="180" cy="260" r="5"/><text x="192" y="256">Memory&#160;Engine</text></g>
+            <g class="node" style="--d:5"><circle cx="270" cy="300" r="5"/><text x="282" y="296">Chronos</text></g>
+          </g>
+        </svg>
+        <p class="graph-caption">six builds, one graph-theory throughline</p>
+      </div>
+    </section>
+
+    <section id="builds" class="builds">
+      <h2><span class="num">01</span> Active Builds</h2>
+
+      <ul class="build-list">
+        <li class="build-row">
+          <span class="status live">LIVE</span>
+          <span class="build-name">PricePoa</span>
+          <span class="build-desc">WhatsApp-native AI agent for location-aware grocery price comparison across Kenyan supermarkets.</span>
+          <span class="build-date">2026</span>
+        </li>
+        <li class="build-row">
+          <span class="status live">LIVE</span>
+          <span class="build-name">ChaiMetrics</span>
+          <span class="build-desc">Yield prediction and relational farm-factory analysis for 240 KTDA smallholder tea farms.</span>
+          <span class="build-date">2026</span>
+        </li>
+        <li class="build-row">
+          <span class="status build">IN BUILD</span>
+          <span class="build-name">TaPesa</span>
+          <span class="build-desc">NFC tap-to-pay M-Pesa app for Android, built on host card emulation and ECDSA-backed key storage.</span>
+          <span class="build-date">2026</span>
+        </li>
+        <li class="build-row">
+          <span class="status build">IN BUILD</span>
+          <span class="build-name">RECON</span>
+          <span class="build-desc">Civic accountability platform tracking Nyeri County governance, budgets, and elected officials.</span>
+          <span class="build-date">2025–26</span>
+        </li>
+        <li class="build-row">
+          <span class="status proto">PROTOTYPE</span>
+          <span class="build-name">Persistent Memory Agent</span>
+          <span class="build-desc">GNN-ranked long-term memory for LLM agents, working through cold-start via persona bootstrapping.</span>
+          <span class="build-date">2026</span>
+        </li>
+        <li class="build-row">
+          <span class="status proto">PROTOTYPE</span>
+          <span class="build-name">Chronos</span>
+          <span class="build-desc">Four-stage middleware pipeline — ingest, process, index, inject — for real-time AI context.</span>
+          <span class="build-date">2025</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="work" class="work">
+      <h2><span class="num">02</span> Selected Work</h2>
+
+      <article class="work-card">
+        <div class="work-visual">
+          <svg viewBox="0 0 200 200" class="mini-graph">
+            <circle cx="60" cy="50" r="22" class="leaf"/><circle cx="140" cy="70" r="16" class="leaf"/>
+            <circle cx="90" cy="130" r="26" class="leaf"/><circle cx="155" cy="150" r="13" class="leaf"/>
+            <line x1="60" y1="50" x2="140" y2="70" class="leaf-edge"/>
+            <line x1="60" y1="50" x2="90" y2="130" class="leaf-edge"/>
+            <line x1="140" y1="70" x2="155" y2="150" class="leaf-edge"/>
+            <line x1="90" y1="130" x2="155" y2="150" class="leaf-edge"/>
+          </svg>
+        </div>
+        <div class="work-body">
+          <h3>ChaiMetrics</h3>
+          <p class="work-meta">PyTorch Geometric · XGBoost · SARIMA · Flask/React · 2026</p>
+          <p class="work-abstract">
+            An ML platform for KTDA smallholder tea farmers spanning 240 farms and 15 factories.
+            Yield forecasting runs on gradient-boosted trees and SARIMA time series, while a graph
+            neural network models the farm-factory relational structure directly — treating
+            collection routes and processing dependencies as a graph rather than flattening them
+            into tabular features. An LLM narration layer translates model output into plain-language
+            guidance for farmers with no ML background.
           </p>
           <div class="tags">
-            <span class="tag">Vue.js</span>
-            <span class="tag">Python</span>
-            <span class="tag">Django</span>
-            <span class="tag">Docker</span>
+            <span>PyTorch Geometric</span><span>XGBoost</span><span>SARIMA</span><span>Ollama</span>
           </div>
+          <a href="#" class="work-link">View repo →</a>
         </div>
-      </div>
+      </article>
 
-      <div class="exp-item fade-in">
-        <div class="exp-meta">
-          <p class="exp-date">2022 — 2024</p>
-          <p class="exp-company">Beginning</p>
+      <article class="work-card">
+        <div class="work-visual">
+          <svg viewBox="0 0 200 200" class="mini-graph">
+            <circle cx="50" cy="60" r="14" class="pin"/><circle cx="120" cy="40" r="14" class="pin"/>
+            <circle cx="150" cy="120" r="14" class="pin"/><circle cx="70" cy="140" r="14" class="pin"/>
+            <line x1="50" y1="60" x2="120" y2="40" class="pin-edge"/>
+            <line x1="120" y1="40" x2="150" y2="120" class="pin-edge"/>
+            <line x1="70" y1="140" x2="150" y2="120" class="pin-edge"/>
+            <line x1="50" y1="60" x2="70" y2="140" class="pin-edge"/>
+          </svg>
         </div>
-        <div class="exp-body">
-          <h3 class="exp-role">Junior Developer</h3>
-          <p class="exp-desc">
-            Started career in high school, learnt computer science for four years that was capped with a final year project.
-            Enrolled into an online Python bootcamp in Udemy where I undertook rigourous training in backend and frontend development.
-            Learnt the full software delivery lifecycle end-to-end by spending years building and shipping projects, both personal and for clients.
-            Participated in hackathons on campus and won a few. Also contributed to open source projects and built some of my own.        
+        <div class="work-body">
+          <h3>PricePoa</h3>
+          <p class="work-meta">WhatsApp Business API · Location services · Scraping pipeline · 2026</p>
+          <p class="work-abstract">
+            A grocery price comparison agent that lives entirely inside WhatsApp — no app to install.
+            Send a shopping list, get back the cheapest nearby basket across supermarkets, ranked by
+            distance and total cost. Built on a scraping pipeline feeding a location-aware pricing
+            index, designed for a market where WhatsApp is the default interface for almost everything.
           </p>
           <div class="tags">
-            <span class="tag">Computer Science</span>
-            <span class="tag">C++</span>
-            <span class="tag">Python</span>
-            <span class="tag">React</span>
-            <span class="tag">Html</span>
-            <span class="tag">CSS</span>
-            <span class="tag">Linux</span>
+            <span>WhatsApp API</span><span>MongoDB</span><span>Geolocation</span><span>Scrapy</span>
           </div>
+          <a href="#" class="work-link">View repo →</a>
         </div>
+      </article>
+
+      <article class="work-card">
+        <div class="work-visual">
+          <svg viewBox="0 0 200 200" class="mini-graph">
+            <rect x="40" y="40" width="50" height="50" class="shield"/>
+            <rect x="110" y="100" width="50" height="50" class="shield"/>
+            <line x1="65" y1="65" x2="135" y2="125" class="shield-edge"/>
+          </svg>
+        </div>
+        <div class="work-body">
+          <h3>RECON</h3>
+          <p class="work-meta">Flask · MongoDB · Qdrant · GNN relational analysis · 2025–26</p>
+          <p class="work-abstract">
+            A civic accountability platform tracking Nyeri County governance — budgets, NG-CDF
+            allocations, MPs, and the Governor's office. A graph neural network models relationships
+            between officials, projects, and spending; a retrieval-augmented chatbot layer sits on top,
+            answering questions and surfacing proactive briefings from the underlying data.
+          </p>
+          <div class="tags">
+            <span>GNN</span><span>Qdrant</span><span>Vector Search</span><span>Flask</span>
+          </div>
+          <a href="#" class="work-link">View repo →</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="footer-top">
+      <p class="footer-line">Civil engineering by day, graphs and gradients by night.</p>
+      <div class="footer-links">
+        <a href="https://github.com/mnatakanijiiteajesasa" target="_blank" rel="noopener">GitHub</a>
+        <!-- TODO: swap in real email -->
+        <a href="mailto:you@example.com">Email</a>
+        <a href="https://t.me/mogaka_bot" target="_blank" rel="noopener">Telegram</a>
       </div>
     </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="section-header fade-in">
-      <span class="section-num">02</span>
-      <h2 class="section-title">Projects</h2>
-      <div class="section-line"></div>
-    </div>
-
-    <div class="projects-grid">
-      <a href="https://github.com/mnatakanijiiteajesasa/TapesaApp" target="_blank" class="project-card fade-in">
-        <div class="project-icon">🛠</div>
-        <h3 class="project-name">Tapesa</h3>
-        <p class="project-desc">
-          An android application that enables users to make M-pesa transactions by tapping their phones together or against POS systems. The app utilises the NFC capabilities of modern smartphones to facilitate secure and convenient peer-to-peer payments, as well as payments to merchants. 
-          This is made possible through the use of a double rail architecture, where the app detects whether the user has an active internet connection. If the user is online, the app processes transactions in real-time through the M-pesa API. If the user is offline, the app utilises GSM technology to make transactions by sending USSD codes directly to the M-pesa system. 
-          This ensures that users can continue to make payments and manage their finances regardless of their connectivity status, providing a reliable and flexible payment solution for a wide range of users.
-          Tapesa transforms a phone into a contactless payment device.
-        </p>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">Android</span>
-          <span class="tag">NFC</span>
-          <span class="tag">M-pesa API</span>
-          <span class="tag">GSM</span>
-          <span class="tag">Fintech<span>
-        </div>
-        <div class="project-footer">
-          <span class="project-link">View on GitHub →</span>
-          <span class="project-stars">★ 312</span>
-        </div>
-      </a>
-
-      <a href="https://github.com/mnatakanijiiteajesasa/Chronos" target="_blank" class="project-card fade-in">
-        <div class="project-icon">⚡</div>
-        <h3 class="project-name">Chronos</h3>
-        <p class="project-desc">
-          A open source system that integrates into any AI model in the market to provide real-time data to the model. 
-          It uses a combination of web scraping, APIs and databases to collect and store data on various topics such as news, weather, stock prices and more. 
-          Chronos then provides this data to the AI model in a structured format, allowing it to make informed decisions and generate more accurate responses based on the most up-to-date information available.
-  
-          
-        </p>
-        <div class="tags">
-          <span class="tag">AI</span>
-          <span class="tag">MCP</span>
-          <span class="tag">Open Source</span>
-          <span class="tag">Web Scraping</span>
-          <span class="tag">Kubernetes</span>
-          <span class="tag">Kafka</span>
-        </div>
-        <div class="project-footer">
-          <span class="project-link">View on GitHub →</span>
-          <span class="project-stars">★ 187</span>
-        </div>
-      </a>
-
-      <a href="https://github.com/mnatakanijiiteajesasa/nba-sharp-kamare" target="_blank" class="project-card fade-in">
-        <div class="project-icon">🔍</div>
-        <h3 class="project-name">Nba Sharp Betting </h3>
-        <p class="project-desc">
-          An Nba betting prediction system that uses different features such as player stats, team stats, injuries and more to make predictions on the outcome of NBA games.
-          The data scraped from the nba api is organized and used to train machine learning models such as XGBoost and Random Forest to make predictions on the outcome of NBA games. 
-          The system also uses a custom implementation of the GNL algorithm to optimize the betting strategy and maximize profits.
-          The system backend is complemented with a dashboard for user friendliness. 
-       
-        </p>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">Algorithms</span>
-          <span class="tag">Machine Learning</span>
-          <span class="tag">Data Science</span>
-          <span class="tag">Sports Analytics</span>
-          <span class="tag">Open Source</span>
-        </div>
-        <div class="project-footer">
-          <span class="project-link">View on GitHub →</span>
-          <span class="project-stars">★ 94</span>
-        </div>
-      </a>
-
-      <a href="https://github.com/mnatakanijiiteajesasa/chai-analytics" target="_blank" class="project-card fade-in">
-        <div class="project-icon">🌐</div>
-        <h3 class="project-name">Chai Analytics</h3>
-        <p class="project-desc">
-          A platform that provides historical and real-time farm performance analysis for Kenyan tea farmers, based on real data from KTDA. Farmers can keep track 
-          of their farm's performance, compare with other farms, and get insights to improve yield and quality. 
-          The system uses machine learning models, XGBoost, SARIMA and GNL to make predictions on monthly yields, monthly prices and yearly bonuses based on historical data.
-          Also field officers can use the platform to monitor the performance of the farms under their supervision and provide targeted support to farmers who are struggling. 
-          The platform is built with React.js for the frontend, flask for the backend and MongoDb for the database. It also integrates with external APIs to get real-time weather data and market prices.
-        </p>
-        <div class="tags">
-          <span class="tag">React.js</span>
-          <span class="tag">Flask</span>
-          <span class="tag">MongoDB</span>
-          <span class="tag">Machine Learning</span>
-          <span class="tag">Data Science</span> 
-        </div>
-        <div class="project-footer">
-          <span class="project-link">View on GitHub →</span>          
-          <span class="project-link">Live Demo →</span>
-          <span class="project-stars">✦ SaaS</span>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="section-header fade-in">
-      <span class="section-num">03</span>
-      <h2 class="section-title">Skills</h2>
-      <div class="section-line"></div>
-    </div>
-
-    <div class="skills-grid">
-      <div class="skill-group fade-in">
-        <p class="skill-group-title">Languages</p>
-        <div class="skill-list">
-          <span class="tag">TypeScript</span>
-          <span class="tag">Python</span>
-          <span class="tag">Go</span>
-          <span class="tag">SQL</span>
-          <span class="tag">Rust</span>
-        </div>
-      </div>
-      <div class="skill-group fade-in">
-        <p class="skill-group-title">Frontend</p>
-        <div class="skill-list">
-          <span class="tag">React</span>
-          <span class="tag">Next.js</span>
-          <span class="tag">Vue.js</span>
-          <span class="tag">CSS / Tailwind</span>
-        </div>
-      </div>
-      <div class="skill-group fade-in">
-        <p class="skill-group-title">Data Science</p>
-        <div class="skill-list">
-          <span class="tag">Pandas</span>
-          <span class="tag">NumPy</span>
-          <span class="tag">Scikit-learn</span>
-          <span class="tag">TensorFlow</span>
-          <span class="tag">Kafka</span>
-        </div>
-      </div>
-
-      <div class="skill-group fade-in">
-        <p class="skill-group-title">Backend</p>
-        <div class="skill-list">
-          <span class="tag">Flask</span>
-          <span class="tag">FastAPI</span>
-          <span class="tag">GraphQL</span>
-          <span class="tag">REST</span>
-        </div>
-      </div>
-      <div class="skill-group fade-in">
-        <p class="skill-group-title">Infrastructure</p>
-        <div class="skill-list">
-          <span class="tag">AWS</span>
-          <span class="tag">Docker</span>
-          <span class="tag">Kubernetes</span>
-          <span class="tag">Terraform</span>
-          <span class="tag">CI/CD</span>
-        </div>
-      </div>
-      <div class="skill-group fade-in">
-        <p class="skill-group-title">Databases</p>
-        <div class="skill-list">
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">Redis</span>
-          <span class="tag">MongoDB</span>
-          <span class="tag">SQLite</span>
-        </div>
-      </div>
-      <div class="skill-group fade-in">
-        <p class="skill-group-title">Structural Engineering</p>
-        <div class="skill-list">
-          <span class="tag">Soil Mechanics</span>
-          <span class="tag">Structural Analysis</span>
-          <span class="tag">Design</span>
-          <span class="tag">Construction</span>
-          <span class="tag">Project Management</span>
-        </div>
-      </div>
-
-      <div class="skill-group fade-in">
-        <p class="skill-group-title">Animation</p>
-        <div class="skill-list">
-          <span class="tag">Blender</span>
-          <span class="tag">Motion Graphics</span>
-          <span class="tag">Figma</span>
-          <span class="tag">Video Editing</span>
-          <span class="tag">3D & 2D modelling</span>
-        </div>
-      </div>
-
-      <div class="skill-group fade-in">
-        <p class="skill-group-title">Other</p>
-        <div class="skill-list">
-          <span class="tag">Git</span>
-          <span class="tag">Linux</span>
-          <span class="tag">Figma</span>
-          <span class="tag">Testing</span>
-          <span class="tag">Agile</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <div class="contact-section fade-in" id="contact">
-    <div>
-      <h2 class="contact-heading">Let's build something <em>great.</em></h2>
-      <p class="contact-text">
-        Whether you have a project in mind, want to collaborate on something open-source,
-        or just want to say hi — my inbox is always open.
-      </p>
-      <a href="mailto:mogakanewton0@gmail.com" class="btn btn-primary">Send me an email ↗</a>
-    </div>
-
-    <div class="contact-links">
-      <a href="https://github.com/mnatakanijiiteajesasa" target="_blank" class="contact-link">
-        <span class="contact-link-icon">⌥</span>
-        <div>
-          <span class="contact-link-label">CODE</span>
-          github.com/mnatakanijiiteajesasa
-        </div>
-      </a>
-      <a href="https://discord.com/in/diggy5297" target="_blank" class="contact-link">
-        <span class="contact-link-icon">◈</span>
-        <div>
-          <span class="contact-link-label">NETWORK</span>
-          discord.com/in/diggy5297
-        </div>
-      </a>
-      <a href="https://twitter.com/kenyanroux" target="_blank" class="contact-link">
-        <span class="contact-link-icon">◉</span>
-        <div>
-          <span class="contact-link-label">UPDATES</span>
-          @kenyanroux
-        </div>
-      </a>
-      <a href="resume.pdf" class="contact-link">
-        <span class="contact-link-icon">↓</span>
-        <div>
-          <span class="contact-link-label">DOCUMENT</span>
-          Download Resume (PDF)
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <span>© 2026 Newton Mogaka. All rights reserved.</span>
-    <span>Built with HTML · CSS · No frameworks</span>
+    <p class="footer-bottom">© 2026 · Built with plain HTML, CSS &amp; JS · Nairobi, Kenya</p>
   </footer>
 
-  <script>
-    // Intersection Observer for fade-in animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, 80 * (i % 4));
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Smooth active nav highlight
-    const sections = document.querySelectorAll('section, [id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
-
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 120) current = s.id;
-      });
-      navLinks.forEach(a => {
-        a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
