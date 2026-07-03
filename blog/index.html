@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Mogaka</title>
+  <meta name="description" content="Write-ups on the systems I've built — architecture, decisions, and what broke along the way." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <a href="../index.html" class="brand">Mogaka<span class="brand-dot">.</span></a>
+    <nav class="nav-links">
+      <a href="../index.html#builds">Builds</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#papers">Papers</a>
+      <a href="index.html">Blog</a>
+      <a href="../index.html#malware">Malware</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle color theme" title="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+        <circle cx="12" cy="12" r="4.2"/>
+        <path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/>
+      </svg>
+    </button>
+  </header>
+
+  <main>
+    <section class="blog-hero">
+      <h1>Blog</h1>
+      <p>Write-ups on the systems above — why I built them, the decisions that mattered, and what broke along the way.</p>
+    </section>
+
+    <ul class="blog-list">
+      <li class="blog-row">
+        <a href="mnemosyne.html" style="display:block;">
+          <div class="blog-row-top">
+            <span class="blog-row-title">Mnemosyne: a graph neural network memory for persistent AI agents</span>
+            <span class="blog-row-date">2026</span>
+          </div>
+          <p class="blog-row-excerpt">
+            Why I bet on GraphSAGE for agent memory retrieval instead of flat vector search, what a Twitter-timeline
+            analogy taught me about ranking, and the identity bug that quietly broke everything.
+          </p>
+          <span class="blog-row-tag">GNN</span><span class="blog-row-tag">LLM Agents</span><span class="blog-row-tag">Memory Systems</span>
+          <div style="margin-top:0.9rem;"><span class="blog-row-link">Read the write-up →</span></div>
+        </a>
+      </li>
+
+      <li class="blog-row">
+        <a href="chaimetrics.html" style="display:block;">
+          <div class="blog-row-top">
+            <span class="blog-row-title">ChaiMetrics: relational yield forecasting for 240 tea farms</span>
+            <span class="blog-row-date">2026</span>
+          </div>
+          <p class="blog-row-excerpt">
+            Treating farm-factory logistics as a graph instead of a flat table, and combining gradient-boosted trees
+            with a GNN and an LLM narration layer for farmers with no ML background.
+          </p>
+          <span class="blog-row-tag">PyTorch Geometric</span><span class="blog-row-tag">XGBoost</span>
+          <div style="margin-top:0.9rem;"><span class="blog-row-link">Read the write-up →</span></div>
+        </a>
+      </li>
+
+      <li class="blog-row">
+        <a href="pricepoa.html" style="display:block;">
+          <div class="blog-row-top">
+            <span class="blog-row-title">PricePoa: a grocery price agent that lives inside WhatsApp</span>
+            <span class="blog-row-date">2026</span>
+          </div>
+          <p class="blog-row-excerpt">
+            Building for a market where WhatsApp is the default interface — no app install, no onboarding, just a
+            shopping list and a ranked, location-aware basket.
+          </p>
+          <span class="blog-row-tag">WhatsApp API</span><span class="blog-row-tag">Geolocation</span>
+          <div style="margin-top:0.9rem;"><span class="blog-row-link">Read the write-up →</span></div>
+        </a>
+      </li>
+
+      <li class="blog-row">
+        <a href="recon.html" style="display:block;">
+          <div class="blog-row-top">
+            <span class="blog-row-title">RECON: tracking Nyeri County governance with a relational graph</span>
+            <span class="blog-row-date">2025–26</span>
+          </div>
+          <p class="blog-row-excerpt">
+            Modeling officials, projects, and budgets as a graph, then putting a retrieval-augmented chatbot on top
+            so anyone can ask what happened to public money.
+          </p>
+          <span class="blog-row-tag">GNN</span><span class="blog-row-tag">Qdrant</span>
+          <div style="margin-top:0.9rem;"><span class="blog-row-link">Read the write-up →</span></div>
+        </a>
+      </li>
+
+      <li class="blog-row">
+        <a href="tapesa.html" style="display:block;">
+          <div class="blog-row-top">
+            <span class="blog-row-title">TaPesa: tap-to-pay M-Pesa over NFC</span>
+            <span class="blog-row-date">2026</span>
+          </div>
+          <p class="blog-row-excerpt">
+            Host card emulation and ECDSA-backed key storage — giving every transaction a unique signature the
+            M-Pesa backend can verify.
+          </p>
+          <span class="blog-row-tag">Android</span><span class="blog-row-tag">NFC</span>
+          <div style="margin-top:0.9rem;"><span class="blog-row-link">Read the write-up →</span></div>
+        </a>
+      </li>
+    </ul>
+  </main>
+
+  <footer id="contact">
+    <div class="footer-top">
+      <p class="footer-line">An engineer sometimes</p>
+      <div class="footer-links">
+        <a href="https://github.com/mnatakanijiiteajesasa" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:mogakanewton0@gmail.com">Email</a>
+        <a href="https://t.me/mogaka_bot" target="_blank" rel="noopener">Telegram</a>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2026 · Built with plain HTML, CSS &amp; JS · Chuka, Kenya</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
