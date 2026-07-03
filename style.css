@@ -369,6 +369,15 @@ footer {
 @media (max-width: 880px) {
   .hero { grid-template-columns: 1fr; padding-top: 6vh; }
   .hero-graph { order: -1; max-width: 380px; margin: 0 auto 2rem; }
+  .hero-graph {
+  overflow: hidden;
+  }
+
+  .profile-photo {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  }
   .build-row { grid-template-columns: 76px 1fr; }
   .build-row .build-desc { grid-column: 1 / -1; order: 3; }
   .build-row .build-date { display: none; }
